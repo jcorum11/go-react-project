@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+}
+
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.upload-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border: 1px solid #999;
+  padding: 80px 100px;
+  border-radius: 5px;
+  font-size: 19px;
+  max-width: 350px;
+
+  &:hover {
+    background-color: #bbb;
+  }
+
+  .mat-icon {
+    display: flex;
+    font-size: 75px;
+    height: 75px;
+    width: 75px;
+    color: rgba(0,0,0,0.8);
+  }
+}
+
+.selected-file {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border: 1px solid #999;
+  padding: 80px 100px;
+  border-radius: 5px;
+  font-size: 19px;
+  max-width: 350px;
+}
+
+#file-upload {
+  position: absolute;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}

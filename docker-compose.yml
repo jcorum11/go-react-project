@@ -1,0 +1,46 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    web:
+        build: docker
+        hostname: web
+        restart: always
+        depends_on:
+            - db
+            - redis
+        volumes:
+            - ./api:/www/web:cached
+        ports:
+            - "127.0.0.1:9090:80"
+            - "127.0.0.1:9444:443"
+        environment:
+            - DB_HOST=db
+            - DB_READ_ONLY_HOST=db
+            - DB_PORT=3306
+            - DB_REPLICA=db
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - XDEBUG_MODE=debug
+            - LOG_CHANNEL=docker
+
+    db:
+        platform: linux/x86_64
+        image: mysql:5.7.33
+        hostname: db
+        restart: always
+        volumes:
+            - ./docker/db-data:/var/lib/mysql:cached
+            - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf:delegated
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_USER: react
+            MYSQL_PASSWORD: speakworks
+            MYSQL_DATABASE: react
+        ports:
+            - "127.0.0.1:9306:3306"
+
+    redis:
+        image: redis:alpine
+        restart: on-failure
+        ports:
+            - "127.0.0.1:9379:6379"

@@ -1,0 +1,21 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.videos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.video {
+  display: flex;
+}
+
+.video-player {
+  width: 300px;
+  height: auto;
+  margin: 10px;
+}
